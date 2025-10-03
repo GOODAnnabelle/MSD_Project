@@ -1,0 +1,4 @@
+# .env.production
+REACT_APP_API_URL=https://api.restaurant.com
+REACT_APP_STRIPE_PUBLIC_KEY=pk_live_xxxxxxxxxxxxxxxx
+REACT_APP_GA_TRACKING_ID=UA-XXXXXXXXX-2
