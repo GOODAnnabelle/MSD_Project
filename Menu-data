@@ -1,0 +1,22 @@
+// menuData.js - 扩展版本
+const menuData = {
+    categories: [
+        { id: "all", name: "Popular", icon: "fa-fire" },
+        { id: "chef", name: "Chef's Special", icon: "fa-hamburger" },
+        { id: "seafood", name: "Seafood", icon: "fa-fish" },
+        { id: "meat", name: "Meat", icon: "fa-drumstick-bite" },
+        { id: "vegetarian", name: "Vegetarian", icon: "fa-leaf" },
+        { id: "drinks", name: "Drinks", icon: "fa-mug-hot" },
+        { id: "desserts", name: "Desserts", icon: "fa-ice-cream" }
+    ],
+    
+    items: [
+        // 热门推荐
+        { id: 1, name: "Signature Burger", description: "Juicy beef patty with fresh vegetables and special sauce", price: 38, category: "all", icon: "fa-hamburger" },
+        { id: 2, name: "Italian Pizza", description: "Handmade crust with Italian style sauce", price: 68, category: "all", icon: "fa-pizza-slice" },
+        { id: 3, name: "Pan-Fried Salmon", description: "Norwegian salmon with lemon butter sauce", price: 88, category: "all", icon: "fa-fish" },
+        
+        // 主厨特色 (更多菜品...)
+        // 其他分类的菜品...
+    ]
+};
