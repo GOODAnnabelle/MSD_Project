@@ -1,0 +1,33 @@
+// stateManager.js - 扩展版本
+let currentState = {
+    currentCategory: 'all',
+    searchQuery: '',
+    orderItems: [],
+    userPreferences: {
+        theme: 'light',
+        language: 'en',
+        currency: 'USD'
+    }
+};
+
+// 初始化状态
+function initState() {
+    const savedOrder = loadFromLocalStorage('restaurantOrder');
+    const savedPreferences = loadFromLocalStorage('userPreferences');
+    
+    if (savedOrder) {
+        currentState.orderItems = savedOrder;
+    }
+    
+    if (savedPreferences) {
+        currentState.userPreferences = { ...currentState.userPreferences, ...savedPreferences };
+    }
+}
+
+// 保存用户偏好
+function saveUserPreferences(preferences) {
+    currentState.userPreferences = { ...currentState.userPreferences, ...preferences };
+    saveToLocalStorage('userPreferences', currentState.userPreferences);
+}
+
+// 更多状态管理函数...
