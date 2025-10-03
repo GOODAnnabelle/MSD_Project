@@ -1,0 +1,38 @@
+// config.js - 部署配置
+const deploymentConfig = {
+    environments: {
+        development: {
+            apiBaseUrl: 'http://localhost:3000',
+            debugMode: true,
+            features: {
+                analytics: false,
+                payment: false
+            }
+        },
+        staging: {
+            apiBaseUrl: 'https://staging.restaurant.com',
+            debugMode: false,
+            features: {
+                analytics: true,
+                payment: false
+            }
+        },
+        production: {
+            apiBaseUrl: 'https://api.restaurant.com',
+            debugMode: false,
+            features: {
+                analytics: true,
+                payment: true
+            }
+        }
+    },
+    
+    getConfig: function(env) {
+        return this.environments[env] || this.environments.development;
+    }
+};
+
+// 导出配置
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = deploymentConfig;
+}
