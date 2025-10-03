@@ -1,0 +1,32 @@
+// package.json - 添加部署脚本
+{
+  "name": "restaurant-order-system",
+  "version": "1.0.0",
+  "description": "A restaurant ordering system",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy:dev": "npm run build && aws s3 sync build/ s3://dev-restaurant-app --delete",
+    "deploy:staging": "npm run build && aws s3 sync build/ s3://staging-restaurant-app --delete",
+    "deploy:prod": "npm run build && aws s3 sync build/ s3://prod-restaurant-app --delete"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
