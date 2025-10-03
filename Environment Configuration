@@ -1,0 +1,50 @@
+// config/appConfig.js
+const appConfig = {
+    // 应用设置
+    app: {
+        name: "Restaurant Order System",
+        version: "1.0.0",
+        defaultLanguage: "en",
+        supportedLanguages: ["en", "es", "fr"]
+    },
+    
+    // API配置
+    api: {
+        baseURL: process.env.REACT_APP_API_URL || "http://localhost:3000",
+        timeout: 10000,
+        endpoints: {
+            menu: "/api/menu",
+            orders: "/api/orders",
+            users: "/api/users"
+        }
+    },
+    
+    // 功能开关
+    features: {
+        analytics: true,
+        onlinePayment: false,
+        multiLanguage: true
+    },
+    
+    // UI配置
+    ui: {
+        theme: {
+            primaryColor: "#ff7b00",
+            secondaryColor: "#ffdd00",
+            fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+        },
+        layout: {
+            maxWidth: "1400px",
+            borderRadius: "10px"
+        }
+    },
+    
+    // 支付配置
+    payment: {
+        gateway: "stripe",
+        publicKey: process.env.REACT_APP_STRIPE_PUBLIC_KEY || "",
+        currency: "USD"
+    }
+};
+
+export default appConfig;
