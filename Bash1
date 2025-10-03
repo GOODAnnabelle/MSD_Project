@@ -1,0 +1,4 @@
+# .env.development
+REACT_APP_API_URL=http://localhost:3000
+REACT_APP_STRIPE_PUBLIC_KEY=pk_test_xxxxxxxxxxxxxxxx
+REACT_APP_GA_TRACKING_ID=UA-XXXXXXXXX-1
