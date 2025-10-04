@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Restaurant Order System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff7b00, #ff5500);
+            color: white;
+            padding: 20px 0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            font-size: 32px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav li {
+            margin-left: 25px;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 17px;
+            transition: all 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffdd00;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .menu-categories {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .menu-categories h2 {
+            color: #ff7b00;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffdd00;
+        }
+        
+        .categories {
+            list-style: none;
+        }
+        
+        .categories li {
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .categories li i {
+            margin-right: 10px;
+            color: #ff7b00;
+        }
+        
+        .categories li:hover, .categories li.active {
+            background-color: #fff4e6;
+            color: #ff7b00;
+        }
+        
+        .menu-items {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .menu-header h2 {
+            color: #ff7b00;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 8px 15px;
+            width: 250px;
+        }
+        
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            margin-left: 8px;
+            width: 100%;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .item-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .item-image {
+            height: 140px;
+            background: linear-gradient(45deg, #ffdd00, #ff7b00);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+        
+        .item-info {
+            padding: 15px;
+        }
+        
+        .item-info h3 {
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .item-info p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .item-price {
+            color: #ff7b00;
+            font-weight: 700;
+            font-size: 18px;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .add-btn {
+            background: #ff7b00;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .add-btn:hover {
+            background: #ff5500;
+        }
+        
+        .order-summary {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .order-summary h2 {
+            color: #ff7b00;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffdd00;
+        }
+        
+        .order-items {
+            list-style: none;
+            margin-bottom: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-item-info {
+            flex-grow: 1;
+        }
+        
+        .order-item-info h4 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .order-item-price {
+            color: #ff7b00;
+            font-weight: 600;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        
+        .quantity {
+            margin: 0 10px;
+            font-weight: 600;
+        }
+        
+        .remove-btn {
+            color: #ff4d4f;
+            cursor: pointer;
+            margin-left: 15px;
+        }
+        
+        .order-total {
+            padding: 15px 0;
+            border-top: 2px solid #ffdd00;
+            border-bottom: 2px solid #ffdd00;
+            margin: 15px 0;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .final-total {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ff7b00;
+        }
+        
+        .checkout-btn {
+            background: #ff7b00;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        
+        .checkout-btn:hover {
+            background: #ff5500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .menu-items {
+                grid-column: span 2;
+                order: 1;
+            }
+            
+            .menu-categories, .order-summary {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-items, .menu-categories, .order-summary {
+                grid-column: span 1;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav {
+                margin-top: 15px;
+            }
+            
+            .nav ul {
+                justify-content: center;
+            }
+            
+            .nav li {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <h1>Delicious Restaurant Order System</h1>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href=" "><i class="fas fa-home"></i> Home</a ></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Menu</a ></li>
+                        <li><a href="#"><i class="fas fa-info-circle"></i> About</a ></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> Contact</a ></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="menu-categories">
+                <h2>Food Categories</h2>
+                <ul class="categories">
+                    <li class="active" data-category="all"><i class="fas fa-fire"></i> Popular</li>
+                    <li data-category="chef"><i class="fas fa-hamburger"></i> Chef Special</li>
+                    <li data-category="seafood"><i class="fas fa-fish"></i> Seafood</li>
+                    <li data-category="meat"><i class="fas fa-drumstick-bite"></i> Meat</li>
+                    <li data-category="vegetarian"><i class="fas fa-leaf"></i> Vegetarian</li>
+                    <li data-category="drinks"><i class="fas fa-mug-hot"></i> Drinks</li>
+                    <li data-category="desserts"><i class="fas fa-ice-cream"></i> Desserts</li>
+                </ul>
+            </div>
+
+            <div class="menu-items">
+                <div class="menu-header">
+                    <h2 id="current-category">Popular</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search dishes...">
+                    </div>
+                </div>
+                <div class="items-grid" id="menu-items-container">
+                    <!-- Menu items will be dynamically generated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h2>Current Order</h2>
+                <ul class="order-items" id="order-items-container">
+                    <!-- Order items will be dynamically generated by JavaScript -->
+                </ul>
+                <div class="order-total">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-price">$0</span>
+                    </div>
+                    <div class="total-row">
+                        <span>Service Fee:</span>
+                        <span id="service-fee">$10</span>
+                    </div>
+                    <div class="total-row final-total">
+                        <span>Total:</span>
+                        <span id="total-price">$10</span>
+                    </div>
+                </div>
+                <button class="checkout-btn" id="submit-order">Submit Order</button>
+                <button class="checkout-btn" style="background: #6c757d;" id="continue-add">Continue Adding</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2023 Delicious Restaurant Order System | All Rights Reserved</p >
+        </footer>
+    </div>
+
+    <!-- Load JS files in dependency order -->
+    <script src="menuData.js"></script>
+    <script src="utils.js"></script>
+    <script src="stateManager.js"></script>
+    <script src="uiRenderer.js"></script>
+    <script src="eventHandler.js"></script>
+    
+    <script>
+        // Initialize application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize state
+            initState();
+            
+            // Render initial UI
+            renderCategories();
+            renderMenuItems();
+            renderOrderItems();
+            updateOrderTotal();
+            
+            // Bind event handlers
+            bindCategoryEvents();
+            bindSearchEvent();
+            bindAddToOrderEvents();
+            bindOrderItemEvents();
+            bindCheckoutEvents();
+        });
+    </script>
+</body>
+</html>
