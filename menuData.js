@@ -1,0 +1,52 @@
+// Menu database
+const menuData = {
+    categories: [
+        { id: "all", name: "Popular", icon: "fa-fire" },
+        { id: "chef", name: "Chef Special", icon: "fa-hamburger" },
+        { id: "seafood", name: "Seafood", icon: "fa-fish" },
+        { id: "meat", name: "Meat", icon: "fa-drumstick-bite" },
+        { id: "vegetarian", name: "Vegetarian", icon: "fa-leaf" },
+        { id: "drinks", name: "Drinks", icon: "fa-mug-hot" },
+        { id: "desserts", name: "Desserts", icon: "fa-ice-cream" }
+    ],
+    
+    items: [
+        // Popular
+        { id: 1, name: "Signature Burger", description: "Juicy beef patty with fresh vegetables and special sauce", price: 38, category: "all", icon: "fa-hamburger" },
+        { id: 2, name: "Italian Pizza", description: "Handmade crust with Italian style sauce", price: 68, category: "all", icon: "fa-pizza-slice" },
+        { id: 3, name: "Pan-Seared Salmon", description: "Norwegian salmon with lemon butter sauce", price: 88, category: "all", icon: "fa-fish" },
+        
+        // Chef Special
+        { id: 4, name: "Mac and Cheese", description: "Three cheese blend with rich creamy texture", price: 42, category: "chef", icon: "fa-cheese" },
+        { id: 5, name: "Grilled Lamb Chops", description: "New Zealand lamb chops with mint sauce", price: 98, category: "chef", icon: "fa-drumstick-bite" },
+        { id: 6, name: "Cream of Mushroom Soup", description: "Fresh mushrooms cooked with cream", price: 32, category: "chef", icon: "fa-utensil-spoon" },
+        { id: 7, name: "Black Pepper Steak", description: "Australian steak with black pepper sauce", price: 108, category: "chef", icon: "fa-bacon" },
+        { id: 8, name: "Seafood Pasta", description: "Mixed seafood with Italian pasta", price: 78, category: "chef", icon: "fa-fish" },
+        { id: 9, name: "Grilled Chicken Salad", description: "Grilled chicken breast with fresh vegetables", price: 45, category: "chef", icon: "fa-leaf" },
+        
+        // Seafood
+        { id: 10, name: "Garlic Shrimp", description: "Fresh shrimp grilled with garlic", price: 76, category: "seafood", icon: "fa-shrimp" },
+        { id: 11, name: "Steamed Sea Bass", description: "Fresh sea bass steamed to perfection", price: 82, category: "seafood", icon: "fa-fish" },
+        { id: 12, name: "Cheese Baked Lobster", description: "Boston lobster with cheese topping", price: 158, category: "seafood", icon: "fa-crab" },
+        
+        // Meat
+        { id: 13, name: "Braised Pork", description: "Traditional Chinese braised pork", price: 58, category: "meat", icon: "fa-bacon" },
+        { id: 14, name: "Grilled Chicken Wings", description: "Chicken wings with secret sauce", price: 38, category: "meat", icon: "fa-drumstick-bite" },
+        { id: 15, name: "German Sausages", description: "Assorted German style sausages", price: 48, category: "meat", icon: "fa-hotdog" },
+        
+        // Vegetarian
+        { id: 16, name: "Garden Salad", description: "Fresh organic vegetables with vinaigrette", price: 32, category: "vegetarian", icon: "fa-carrot" },
+        { id: 17, name: "Mushroom Greens", description: "Fresh mushrooms with green vegetables", price: 28, category: "vegetarian", icon: "fa-leaf" },
+        { id: 18, name: "Mapo Tofu", description: "Classic Sichuan style spicy tofu", price: 36, category: "vegetarian", icon: "fa-cheese" },
+        
+        // Drinks
+        { id: 19, name: "Fresh Orange Juice", description: "Freshly squeezed orange juice", price: 22, category: "drinks", icon: "fa-glass" },
+        { id: 20, name: "Iced Lemon Tea", description: "Black tea with fresh lemon", price: 18, category: "drinks", icon: "fa-glass-whiskey" },
+        { id: 21, name: "Mocha Coffee", description: "Italian style mocha coffee", price: 28, category: "drinks", icon: "fa-coffee" },
+        
+        // Desserts
+        { id: 22, name: "Chocolate Ice Cream", description: "Belgian chocolate ice cream", price: 28, category: "desserts", icon: "fa-ice-cream" },
+        { id: 23, name: "Tiramisu", description: "Classic Italian dessert", price: 35, category: "desserts", icon: "fa-birthday-cake" },
+        { id: 24, name: "Fresh Fruit Platter", description: "Seasonal fresh fruits", price: 38, category: "desserts", icon: "fa-apple-alt" }
+    ]
+};
